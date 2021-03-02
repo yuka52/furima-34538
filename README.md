@@ -28,10 +28,10 @@
 | category_id         | integer    | null: false                    |
 | condition_id        | integer    | null: false                    |
 | delivery_fee_id     | integer    | null: false                    |
-| prefectures_id      | integer    | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | days_to_ship_id     | integer    | null: false                    |
 | price               | integer    | null: false                    |
-| description         | text       | null: false
+| description         | text       | null: false                    |
 | user                | references | null: false, foreign_key: true | 
 
 ### Association
@@ -57,12 +57,12 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | postal_code      | string     | null: false                    |
-| prefectures_id   | integer    | null: false                    | 
+| prefecture_id    | integer    | null: false                    | 
 | municipality     | string     | null: false                    |
 | address          | string     | null: false                    |
 | building         | string     |                                |
-| phone number     | string     | null: false                    |
-| orders           | references | null: false, foreign_key: true |
+| phone_number     | string     | null: false                    |
+| order            | references | null: false, foreign_key: true |
 
 ### Association
 
