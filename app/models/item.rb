@@ -5,10 +5,12 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :Prefecture
   belongs_to :day_to_ship
+  has_one_attached :image
   
   with_options presence: true do
    validates :name  
    validates :description
+   validates :image
 
    with_options numericality: {oter_than: 1 } do 
       validates :category_id
