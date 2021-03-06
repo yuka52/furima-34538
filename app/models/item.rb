@@ -1,16 +1,17 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :Category
-  belongs_to :Condition
+  belongs_to :category
+  belongs_to :condition
   belongs_to :delivery_fee
   belongs_to :Prefecture
   belongs_to :day_to_ship
   
-  with_options presense: true do
+  with_options presence: true do
    validates :name  
    validates :description
 
    with_options numericality: {oter_than: 1 } do 
+      validates :category_id
       validates :condition_id 
       validates :delivery_fee_id 
       validates :prefecture_id  
