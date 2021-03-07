@@ -144,7 +144,7 @@ RSpec.describe User, type: :model do
           @user.birthday = ''
           @user.valid?
           expect(@user.errors.full_messages).to include("Birthday can't be blank")
-        end  
+        end
       end
     end
   end
