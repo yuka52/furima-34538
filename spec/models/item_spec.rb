@@ -37,11 +37,11 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Category Select')
       end
 
-      it 'カテゴリーの情報は１を選択すると出品できないこと' do 
+      it 'カテゴリーの情報は１を選択すると出品できないこと' do
         @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category Select')
-      end 
+      end
 
       it '商品の状態についての情報が存在しなければ出品できないこと' do
         @item.condition_id = ''
@@ -49,7 +49,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Condition Select')
       end
 
-      it '商品の状態についての情報は１を選択すると出品できないこと' do 
+      it '商品の状態についての情報は１を選択すると出品できないこと' do
         @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Condition Select')
@@ -61,7 +61,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Delivery fee Select')
       end
 
-      it '配送料の負担についての情報は１を選択すると出品できないこと' do 
+      it '配送料の負担についての情報は１を選択すると出品できないこと' do
         @item.delivery_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery fee Select')
@@ -73,7 +73,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Prefecture Select')
       end
 
-      it '発送元の地域についての情報は１を選択すると出品できないこと' do 
+      it '発送元の地域についての情報は１を選択すると出品できないこと' do
         @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture Select')
@@ -85,11 +85,11 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Days to ship Select')
       end
 
-      it '発送までの日数についての情報は１を選択すると出品できないこと' do 
+      it '発送までの日数についての情報は１を選択すると出品できないこと' do
         @item.days_to_ship_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Days to ship Select')
-      end     
+      end
 
       it '販売価格が300円未満だと出品できないこと' do
         @item.price = 299
@@ -98,7 +98,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格が9,999,999円より高いと出品できないこと' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
@@ -110,13 +110,13 @@ RSpec.describe Item, type: :model do
       end
 
       it '販売価格が半角英数混合だと出品できないこと' do
-        @item.price = "abc123"
+        @item.price = 'abc123'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Half-width number')
       end
 
       it '販売価格が半角英語のみだと出品できないこと' do
-        @item.price = "abcdef"
+        @item.price = 'abcdef'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price Half-width number')
       end
