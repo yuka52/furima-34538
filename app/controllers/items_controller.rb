@@ -35,6 +35,7 @@ class ItemsController < ApplicationController
       @item = item
       render :edit
     end
+    redirect_to root_path if current_user.id != @item.user_id
   end
 
   private
