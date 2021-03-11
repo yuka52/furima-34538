@@ -5,11 +5,11 @@ class OrderDestination
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "Postal code Input correctly"}
+    validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "Input correctly"}
     validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
     validates :municipality
     validates :address
-    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "Phone number Input only number"}
+    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "Input only number"}
   end
 
   def save
