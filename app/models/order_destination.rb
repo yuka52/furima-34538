@@ -1,6 +1,6 @@
 class OrderDestination
   include ActiveModel::Model
-  attr_accessor   :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number, :order_id
+  attr_accessor   :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number, :order_id, :token
   
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class OrderDestination
     validates :municipality
     validates :address
     validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "Input only number"}
+    validates :token
   end
 
   def save
