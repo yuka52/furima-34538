@@ -1,0 +1,65 @@
+<div class="listed-contents">
+  <header class="listed-header">
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+  </header>
+
+  <div class="listed-title">
+    <%= "#{current_user.nickname}さんの出品リスト" %>
+  </div>
+  <div class="profit">
+     <%= "今月の売上#{@price}円・利益#{(@price * 0.9).floor}円・手数料#{(@price * 0.1).floor}円" %>
+  </div>
+
+  <div class='item-contents'>
+    <ul class='item-lists'>
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <% if @myitems.present? %>
+        <li class='list'>
+        <% @myitems.each do |item| %>
+            <%= link_to item_path(item) do %>
+              <div class='item-img-content'>
+                <%= image_tag item.image, class: "item-img" %>
+
+                <% if !item.order.nil? %>
+                 <div class='sold-out'>
+                   <span>Sold Out!!</span>
+                 </div>
+                <% end %>      
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
+                  <div class='shipping-btn'>
+                    <%= "未発送" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <%end%>  
+        </li>
+      <% end %>  
+      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+
+      <% if @myitems.nil? %> 
+        <h3 class='item-name'>
+         出品した商品はありません
+        </h3>
+      <% end %> 
+    </ul>
+  </div>
+  <%# /商品一覧 %>
+  <footer class="items-sell-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">フリマ利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      ©︎Furima,Inc.
+    </p>
+  </footer>
+<div>
