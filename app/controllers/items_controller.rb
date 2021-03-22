@@ -38,6 +38,19 @@ class ItemsController < ApplicationController
     redirect_to root_path if @item.destroy
   end
 
+  def listed
+    items = Item.all
+    @myitems = current_user.items
+    
+    this_month = Date.today.all_month
+    @price = 0
+    @myitems.each do |item|
+     if (item.order.present?) && (this_month.include?(Date.parse(item.order[:created_at].to_s)))
+       @price += item.price
+     end
+    end
+  end
+
   private
 
   def item_params
